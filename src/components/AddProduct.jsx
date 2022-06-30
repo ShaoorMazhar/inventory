@@ -37,7 +37,7 @@ function AddProduct() {
       name: name,
       category: category,
       price: price,
-      quantity: quantity,
+      quantity: quantity
     };
 
     setProducts([...products, newProducts]);
@@ -50,9 +50,8 @@ function AddProduct() {
       container
       sx={{
         display: "flex",
-        justifyContent: "center",
-      }}
-    >
+        justifyContent: "center"
+      }}>
       <Grid container maxWidth={"sm"} mt={6}>
         <Card sx={{ width: "100%" }}>
           <CardContent>
@@ -65,12 +64,11 @@ function AddProduct() {
               sx={{
                 padding: "5%",
                 display: "flex",
-                flexDirection: "column",
+                flexDirection: "column"
               }}
               noValidate
               autoComplete="off"
-              onSubmit={handleSubmit}
-            >
+              onSubmit={handleSubmit}>
               <TextField
                 onChange={(e) => {
                   setName(e.target.value);
@@ -114,8 +112,7 @@ function AddProduct() {
                   id="demo-simple-select"
                   value={category}
                   label="Category"
-                  required
-                >
+                  required>
                   {location?.state?.categories.map((item) => {
                     return (
                       <MenuItem key={item} value={item}>
@@ -126,25 +123,16 @@ function AddProduct() {
                 </Select>
               </FormControl>
               <Button
-                disabled={
-                  name === "" ||
-                  price === "" ||
-                  quantity === "" ||
-                  category?.length === 0
-                }
+                disabled={name === "" || price === "" || quantity === "" || category?.length === 0}
                 sx={{ marginTop: "20px" }}
                 variant="contained"
-                onClick={handleSubmit}
-              >
+                onClick={handleSubmit}>
                 Add
               </Button>
             </Box>
           </CardContent>
         </Card>
-        <Grid
-          item
-          sx={{ marginTop: "20px", marginLeft: "20px", fontSize: "18px" }}
-        >
+        <Grid item sx={{ marginTop: "20px", marginLeft: "20px", fontSize: "18px" }}>
           <b>Current Stores</b>
         </Grid>
         <TableContainer component={Paper} sx={{ marginTop: "20px" }}>
@@ -170,8 +158,7 @@ function AddProduct() {
                 return (
                   <TableRow
                     key={product.name}
-                    sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                  >
+                    sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
                     <TableCell>{product.name}</TableCell>
                     <TableCell align="right">{product.quantity}</TableCell>
                     <TableCell align="right">{product.price}</TableCell>

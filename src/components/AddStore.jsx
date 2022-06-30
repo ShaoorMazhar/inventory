@@ -46,7 +46,7 @@ function AddStore() {
 
     const newStore = {
       name: name,
-      categories: categories,
+      categories: categories
     };
 
     setStores([...stores, newStore]);
@@ -65,9 +65,8 @@ function AddStore() {
       container
       sx={{
         display: "flex",
-        justifyContent: "center",
-      }}
-    >
+        justifyContent: "center"
+      }}>
       <Grid container maxWidth={"sm"} mt={6}>
         <Card sx={{ width: "100%" }}>
           <CardContent>
@@ -80,12 +79,11 @@ function AddStore() {
               sx={{
                 padding: "5%",
                 display: "flex",
-                flexDirection: "column",
+                flexDirection: "column"
               }}
               noValidate
               autoComplete="off"
-              onSubmit={handleSubmit}
-            >
+              onSubmit={handleSubmit}>
               <TextField
                 onChange={(e) => {
                   setName(e.target.value);
@@ -118,9 +116,8 @@ function AddStore() {
                 container
                 sx={{
                   display: "flex",
-                  gap: ".3em",
-                }}
-              >
+                  gap: ".3em"
+                }}>
                 {categories.map((categories, index) => (
                   <Grid
                     item
@@ -131,9 +128,8 @@ function AddStore() {
                       borderRadius: "20px",
                       display: "flex",
                       alignItems: "center",
-                      marginTop: ".5em",
-                    }}
-                  >
+                      marginTop: ".5em"
+                    }}>
                     {categories}
                     <Grid
                       item
@@ -148,10 +144,9 @@ function AddStore() {
                         alignItems: "center",
                         marginLeft: ".3em",
                         fontSize: "18px",
-                        cursor: "pointer",
+                        cursor: "pointer"
                       }}
-                      onClick={() => removeCategory(index)}
-                    >
+                      onClick={() => removeCategory(index)}>
                       &times;
                     </Grid>
                   </Grid>
@@ -162,17 +157,13 @@ function AddStore() {
                 disabled={name === "" || categories?.length === 0}
                 sx={{ marginTop: "20px" }}
                 variant="contained"
-                onClick={handleSubmit}
-              >
+                onClick={handleSubmit}>
                 Create
               </Button>
             </Box>
           </CardContent>
         </Card>
-        <Grid
-          item
-          sx={{ marginTop: "20px", marginLeft: "20px", fontSize: "18px" }}
-        >
+        <Grid item sx={{ marginTop: "20px", marginLeft: "20px", fontSize: "18px" }}>
           <b>Current Stores</b>
         </Grid>
         <TableContainer component={Paper} sx={{ marginTop: "20px" }}>
@@ -198,8 +189,7 @@ function AddStore() {
                 return (
                   <TableRow
                     key={store.name}
-                    sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                  >
+                    sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
                     <TableCell>{index}</TableCell>
                     <TableCell align="right">{store.name}</TableCell>
                     <TableCell align="right">{store.categories}</TableCell>
@@ -209,12 +199,11 @@ function AddStore() {
                           style={{ textDecoration: "none" }}
                           state={{
                             fromAddStore: true,
-                            categories: store.categories,
+                            categories: store.categories
                           }}
                           to={{
-                            pathname: "stores",
-                          }}
-                        >
+                            pathname: "stores"
+                          }}>
                           View
                         </Link>
                       </Button>
