@@ -19,6 +19,9 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { useLocation } from "react-router-dom";
+// import store from "../store";
+import { storeAction } from "../store/storeSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 function AddProduct() {
   const [name, setName] = useState("");
@@ -27,12 +30,11 @@ function AddProduct() {
   const [products, setProducts] = useState([]);
   const location = useLocation();
   const [category, setCategory] = useState("");
+  const dispatch = useDispatch();
+  const data = useSelector((state) => state.Store.arr);
+  console.log(data);
   const handleSubmit = (e) => {
     e.preventDefault();
-    setCategory("");
-    setName("");
-    setQuantity("");
-    setPrice("");
     const newProducts = {
       name: name,
       category: category,
@@ -40,10 +42,16 @@ function AddProduct() {
       quantity: quantity
     };
 
+    dispatch(storeAction.AddStore(newProducts));
+
     setProducts([...products, newProducts]);
     if (name && quantity && price && category) {
       alert("Data Added Successfully!");
     }
+    setCategory("");
+    setName("");
+    setQuantity("");
+    setPrice("");
   };
   return (
     <Grid

@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import React, { useState } from "react";
 import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
@@ -14,7 +15,9 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
+// import { useDispatch } from "react-redux";
+// import PropTypes from "prop-types";
 
 function AddStore() {
   const [categories, setCategories] = useState([]);
@@ -23,6 +26,7 @@ function AddStore() {
   const [categoryError, setCategoryError] = useState(false);
   const [nameError, setNameError] = useState(false);
   const [stores, setStores] = useState([]);
+  // const dispatch = useDispatch();
   function handleKeyDown(e) {
     if (e.key !== "Enter") return;
     const value = e.target.value;
@@ -185,7 +189,7 @@ function AddStore() {
               </TableRow>
             </TableHead>
             <TableBody>
-              {stores.map((store, index) => {
+              {/* {stores.data.map((store, index) => {
                 return (
                   <TableRow
                     key={store.name}
@@ -210,7 +214,7 @@ function AddStore() {
                     </TableCell>
                   </TableRow>
                 );
-              })}
+              })} */}
             </TableBody>
           </Table>
         </TableContainer>
