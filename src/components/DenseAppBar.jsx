@@ -19,6 +19,11 @@ export default function DenseAppBar() {
               Home
             </Link>
           </Button>
+          <Button color="inherit">
+            <Link style={{ color: "#fafafa", textDecoration: "none" }} to="/allStores">
+              Add Stores
+            </Link>
+          </Button>
         </Toolbar>
       </AppBar>
     </Box>
