@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, memo } from "react";
 import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
@@ -19,7 +19,11 @@ import Fab from "@mui/material/Fab";
 import AddIcon from "@mui/icons-material/Add";
 
 function AllStores() {
+  useEffect(() => {
+    console.warn("allstores");
+  });
   const data = useSelector((state) => {
+    console.log("data", state);
     return state?.store?.stores;
   });
   const result = Object.values(data);
@@ -110,4 +114,4 @@ function AllStores() {
   );
 }
 
-export default AllStores;
+export default memo(AllStores);
