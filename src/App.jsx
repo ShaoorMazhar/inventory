@@ -5,12 +5,14 @@ import AddProduct from "./components/addProduct";
 import AllProducts from "./components/allProducts";
 import { Route, Routes } from "react-router-dom";
 import StoreProducts from "./components/storeProducts";
+import ErrorBoundry from "./errorBoundry/errorBoundry";
 
 function App() {
   return (
     <div>
-      <DenseAppBar />
-
+      <ErrorBoundry>
+        <DenseAppBar />
+      </ErrorBoundry>
       <Routes>
         <Route path="/" element={<AllStores />} />
         <Route path="/stores/:id" element={<AddProduct />} />

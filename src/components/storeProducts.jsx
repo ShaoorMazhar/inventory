@@ -74,10 +74,8 @@ function StoreProducts() {
                     </TableRow>
                   </TableHead>
                   <TableBody>
-                    {productData.map((product) => (
-                      <TableRow
-                        key={product?.storeId}
-                        sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
+                    {productData.map((product, i) => (
+                      <TableRow key={i} sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
                         <TableCell>{product.name}</TableCell>
                         <TableCell align="right">{product.quantity}</TableCell>
                         <TableCell align="right">{product.price}</TableCell>
