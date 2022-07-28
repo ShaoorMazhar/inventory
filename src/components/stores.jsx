@@ -16,14 +16,14 @@ import { getTableData } from "../services/tableDataServices";
 import { v4 as uuidv4 } from "uuid";
 
 const columns = [
-  { field: "index", headerName: "No", width: 300, key: 1 },
-  { field: "name", headerName: "Name", width: 300, key: 2 },
-  { field: "categories", headerName: "Category", width: 300, key: 3 },
+  { field: "index", headerName: "No", flex: 1, key: 1 },
+  { field: "name", headerName: "Name", flex: 1, key: 2 },
+  { field: "categories", headerName: "Category", flex: 1, key: 3 },
 
   {
     field: "action",
     headerName: "Visit",
-    width: 218,
+    flex: 1,
     key: 4,
     renderCell: (params) => {
       return (
