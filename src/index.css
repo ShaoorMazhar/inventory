@@ -9,10 +9,14 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
-.css-1s0hp0k-MuiDataGrid-columnHeadersInner {
+/* .css-1s0hp0k-MuiDataGrid-columnHeadersInner {
   background-color: #1b4d89 !important;
   color: white;
-}
+} */
 .css-6hp17o-MuiList-root-MuiMenu-list {
   padding-left: 8px !important;
+}
+.super-app-theme--header {
+  background-color: #1b4d89 !important;
+  color: white;
 }

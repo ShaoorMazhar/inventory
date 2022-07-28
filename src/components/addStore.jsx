@@ -9,10 +9,10 @@ import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import { addStore } from "../redux/actions/action";
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "../theme";
 import { addData } from "../services/tableDataServices";
+import { useNavigate } from "react-router-dom";
 
 function AddStore() {
   const [categories, setCategories] = useState([]);
@@ -20,7 +20,7 @@ function AddStore() {
   const [categoryType, setCategoryType] = useState("");
   const [categoryError, setCategoryError] = useState(false);
   const [nameError, setNameError] = useState(false);
-
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   function handleKeyDown(e) {
     if (e.key !== "Enter") return;
@@ -54,11 +54,12 @@ function AddStore() {
     setName("");
     setCategoryType("");
     setCategories([]);
-    if (name && categoryType) {
-      alert("Store created successfully!");
-    }
+    // if (name && categoryType) {
+    //   alert("Store created successfully!");
+    // }
     setNameError(false);
     setCategoryError(false);
+    navigate("/table");
   };
 
   return (
@@ -172,15 +173,14 @@ function AddStore() {
                     disabled={name === "" || categories?.length === 0}
                     sx={{
                       marginTop: "20px",
-                      width: "25%",
+                      width: "30%",
                       height: "40px",
-                      backgroundColor: "primary.main"
+                      backgroundColor: "primary.main",
+                      color: "#fafafa"
                     }}
                     variant="contained"
                     onClick={handleSubmit}>
-                    <Link style={{ color: "#fafafa", textDecoration: "none" }} to="/table">
-                      Create
-                    </Link>
+                    Create
                   </Button>
                 </Box>
               </Box>

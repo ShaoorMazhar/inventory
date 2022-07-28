@@ -16,15 +16,28 @@ import { getTableData } from "../services/tableDataServices";
 import { v4 as uuidv4 } from "uuid";
 
 const columns = [
-  { field: "index", headerName: "No", flex: 1, key: 1 },
-  { field: "name", headerName: "Name", flex: 1, key: 2 },
-  { field: "categories", headerName: "Category", flex: 1, key: 3 },
+  { field: "index", headerName: "No", flex: 1, key: 1, headerClassName: "super-app-theme--header" },
+  {
+    field: "name",
+    headerName: "Name",
+    flex: 1,
+    key: 2,
+    headerClassName: "super-app-theme--header"
+  },
+  {
+    field: "categories",
+    headerName: "Category",
+    flex: 1,
+    key: 3,
+    headerClassName: "super-app-theme--header"
+  },
 
   {
     field: "action",
     headerName: "Visit",
     flex: 1,
     key: 4,
+    headerClassName: "super-app-theme--header",
     renderCell: (params) => {
       return (
         <Button key={params.row._id} sx={{ height: "13px" }} value={params.row.categories}>

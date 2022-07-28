@@ -15,8 +15,12 @@ import { ThemeProvider } from "@mui/material/styles";
 import theme from "../theme";
 import { useDispatch } from "react-redux";
 import { addProduct } from "../redux/actions/action";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { getCategories, addProductData } from "../services/tableDataServices";
+// import Alert from "@mui/material/Alert";
+// import AlertTitle from "@mui/material/AlertTitle";
+// import Stack from "@mui/material/Stack";
 
 function AddProduct() {
   const [name, setName] = useState("");
@@ -27,7 +31,7 @@ function AddProduct() {
   const [category, setCategory] = useState("");
   const dispatch = useDispatch();
   const [storeItems, setstoreItems] = useState([]);
-
+  const navigate = useNavigate();
   useEffect(() => {
     const callingApi = () => {
       getCategories(id)
@@ -52,10 +56,15 @@ function AddProduct() {
 
     dispatch(addProduct(DataApi));
     setProducts([...products, newProducts]);
+    // if (name && quantity && price && category) {
+    //   alert("Data Added Successfully!");
+    // }
+
     setCategory("");
     setName("");
     setQuantity("");
     setPrice("");
+    navigate(`/table/storeProducts/${id}`);
   };
   return (
     <ThemeProvider theme={theme}>
@@ -154,20 +163,14 @@ function AddProduct() {
                     }
                     sx={{
                       marginTop: "20px !important",
-                      width: "25%",
+                      width: "30%",
                       height: "40px",
-                      backgroundColor: "primary.main"
+                      backgroundColor: "primary.main",
+                      color: "#fafafa"
                     }}
                     variant="contained"
                     onClick={handleSubmit}>
-                    <Link
-                      style={{
-                        color: "#fafafa",
-                        textDecoration: "none"
-                      }}
-                      to={`/table/storeProducts/${id}`}>
-                      Add
-                    </Link>
+                    Add
                   </Button>
                 </Box>
               </Box>

@@ -23,14 +23,13 @@ function StoreProducts() {
   const { id } = useParams();
   const [productItems, setProductItems] = useState([]);
   useEffect(() => {
-    console.log("useeffect called");
     const callingApi = () => {
       getProductData(id)
         .then((res) => {
           setProductItems(res.data.payload.data);
         })
         .catch((err) => {
-          console.log("errrr2", err);
+          console.log(err);
         });
     };
     callingApi();
