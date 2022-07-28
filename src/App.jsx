@@ -1,11 +1,13 @@
 import AddStore from "./components/addStore";
 import DenseAppBar from "./components/denseAppBar";
-import AllStores from "./components/allStores";
 import AddProduct from "./components/addProduct";
 import AllProducts from "./components/allProducts";
 import { Route, Routes } from "react-router-dom";
 import StoreProducts from "./components/storeProducts";
 import ErrorBoundry from "./errorBoundry/errorBoundry";
+import Stores from "./components/stores";
+import Home from "./components/home";
+import ErrorPage from "./components/errorPage";
 
 function App() {
   return (
@@ -13,12 +15,15 @@ function App() {
       <ErrorBoundry>
         <DenseAppBar />
       </ErrorBoundry>
+
       <Routes>
-        <Route path="/" element={<AllStores />} />
+        <Route path="/" element={<Home />} />
         <Route path="/stores/:id" element={<AddProduct />} />
         <Route path="allStores" element={<AddStore />} />
         <Route path="/allProducts" element={<AllProducts />} />
-        <Route path="/storeProducts/:id" element={<StoreProducts />} />
+        <Route path="table/storeProducts/:id" element={<StoreProducts />} />
+        <Route path="/table" element={<Stores />} />
+        <Route path="/*" element={<ErrorPage />} />
       </Routes>
     </div>
   );
