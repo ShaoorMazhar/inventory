@@ -52,10 +52,6 @@ function AddProduct() {
 
     dispatch(addProduct(DataApi));
     setProducts([...products, newProducts]);
-    if (name && quantity && price && category) {
-      alert("Data Added Successfully!");
-    }
-
     setCategory("");
     setName("");
     setQuantity("");
