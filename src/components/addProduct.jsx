@@ -44,7 +44,7 @@ function AddProduct() {
   }, []);
   const handleSubmit = async (e) => {
     e.preventDefault();
-    toast("Store added successfully!");
+    toast("Product added successfully!");
     const newProducts = {
       name: name,
       category: category,
