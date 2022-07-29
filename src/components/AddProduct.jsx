@@ -19,7 +19,6 @@ import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { getCategories, addProductData } from "../services/tableDataServices";
 import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 function AddProduct() {
   const [name, setName] = useState("");

@@ -8,7 +8,7 @@ import ErrorBoundry from "./errorBoundry/errorBoundry";
 import Stores from "./components/stores";
 import Home from "./components/home";
 import ErrorPage from "./components/errorPage";
-
+import "react-toastify/dist/ReactToastify.css";
 function App() {
   return (
     <div>
