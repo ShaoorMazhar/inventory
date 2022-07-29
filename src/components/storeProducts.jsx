@@ -18,6 +18,7 @@ import { Link, useParams } from "react-router-dom";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "../theme";
 import { getProductData } from "../services/tableDataServices";
+import Tooltip from "@mui/material/Tooltip";
 
 function StoreProducts() {
   const { id } = useParams();
@@ -56,14 +57,16 @@ function StoreProducts() {
                   marginBottom: "10px"
                 }}>
                 <b> Current Products</b>
-                <Fab
-                  sx={{ backgroundColor: "#1b4d89 !important", borderRadius: "50% !important" }}
-                  color="primary"
-                  aria-label="add">
-                  <Link style={{ color: "#fafafa", display: "flex" }} to={`/stores/${id}`}>
-                    <AddIcon sx={{ fontSize: "38px", backgroundColor: "primary.main" }} />
-                  </Link>
-                </Fab>
+                <Tooltip title="Add New Product" placement="left" backgroundcolor="black">
+                  <Fab
+                    sx={{ backgroundColor: "#1b4d89 !important", borderRadius: "50% !important" }}
+                    color="primary"
+                    aria-label="add">
+                    <Link style={{ color: "#fafafa", display: "flex" }} to={`/stores/${id}`}>
+                      <AddIcon sx={{ fontSize: "38px", backgroundColor: "primary.main" }} />
+                    </Link>
+                  </Fab>
+                </Tooltip>
               </Typography>
               <Divider />
               <Box

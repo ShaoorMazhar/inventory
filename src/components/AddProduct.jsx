@@ -15,8 +15,11 @@ import { ThemeProvider } from "@mui/material/styles";
 import theme from "../theme";
 import { useDispatch } from "react-redux";
 import { addProduct } from "../redux/actions/action";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { getCategories, addProductData } from "../services/tableDataServices";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function AddProduct() {
   const [name, setName] = useState("");
@@ -27,7 +30,7 @@ function AddProduct() {
   const [category, setCategory] = useState("");
   const dispatch = useDispatch();
   const [storeItems, setstoreItems] = useState([]);
-
+  const navigate = useNavigate();
   useEffect(() => {
     const callingApi = () => {
       getCategories(id)
@@ -42,6 +45,7 @@ function AddProduct() {
   }, []);
   const handleSubmit = async (e) => {
     e.preventDefault();
+    toast("Store added successfully!");
     const newProducts = {
       name: name,
       category: category,
@@ -52,14 +56,11 @@ function AddProduct() {
 
     dispatch(addProduct(DataApi));
     setProducts([...products, newProducts]);
-    if (name && quantity && price && category) {
-      alert("Data Added Successfully!");
-    }
-
     setCategory("");
     setName("");
     setQuantity("");
     setPrice("");
+    navigate(`/table/storeProducts/${id}`);
   };
   return (
     <ThemeProvider theme={theme}>
@@ -158,21 +159,26 @@ function AddProduct() {
                     }
                     sx={{
                       marginTop: "20px !important",
-                      width: "25%",
+                      width: "30%",
                       height: "40px",
-                      backgroundColor: "primary.main"
+                      backgroundColor: "primary.main",
+                      color: "#fafafa"
                     }}
                     variant="contained"
                     onClick={handleSubmit}>
-                    <Link
-                      style={{
-                        color: "#fafafa",
-                        textDecoration: "none"
-                      }}
-                      to={`/table/storeProducts/${id}`}>
-                      Add
-                    </Link>
+                    Add
                   </Button>
+                  <ToastContainer
+                    position="top-center"
+                    autoClose={5000}
+                    hideProgressBar
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                  />
                 </Box>
               </Box>
             </CardContent>

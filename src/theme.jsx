@@ -41,6 +41,16 @@ const theme = createTheme({
       paddingTop: "10px",
       textAlign: "center"
     }
+  },
+  components: {
+    MuiTooltip: {
+      styleOverrides: {
+        tooltip: {
+          backgroundColor: "#c8d8e4",
+          color: "black"
+        }
+      }
+    }
   }
 });
 
