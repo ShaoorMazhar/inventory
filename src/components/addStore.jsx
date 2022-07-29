@@ -13,7 +13,8 @@ import { ThemeProvider } from "@mui/material/styles";
 import theme from "../theme";
 import { addData } from "../services/tableDataServices";
 import { useNavigate } from "react-router-dom";
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 function AddStore() {
   const [categories, setCategories] = useState([]);
   const [name, setName] = useState("");
@@ -35,6 +36,7 @@ function AddStore() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    toast("Store added successfully!");
     if (name === "") {
       setNameError(true);
     }
@@ -54,9 +56,7 @@ function AddStore() {
     setName("");
     setCategoryType("");
     setCategories([]);
-    // if (name && categoryType) {
-    //   alert("Store created successfully!");
-    // }
+
     setNameError(false);
     setCategoryError(false);
     navigate("/table");
@@ -182,6 +182,17 @@ function AddStore() {
                     onClick={handleSubmit}>
                     Create
                   </Button>
+                  <ToastContainer
+                    position="top-center"
+                    autoClose={5000}
+                    hideProgressBar
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                  />
                 </Box>
               </Box>
             </CardContent>

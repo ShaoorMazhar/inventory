@@ -14,6 +14,7 @@ import Fab from "@mui/material/Fab";
 import AddBusinessTwoToneIcon from "@mui/icons-material/AddBusinessTwoTone";
 import { getTableData } from "../services/tableDataServices";
 import { v4 as uuidv4 } from "uuid";
+import Tooltip from "@mui/material/Tooltip";
 
 const columns = [
   { field: "index", headerName: "No", flex: 1, key: 1, headerClassName: "super-app-theme--header" },
@@ -100,15 +101,17 @@ export default function Stores() {
                   marginBottom: "10px"
                 }}>
                 <b> Current Stores</b>
-                <Fab
-                  sx={{ backgroundColor: "#1b4d89 !important", borderRadius: "50% !important" }}
-                  aria-label="add">
-                  <Link style={{ color: "#fafafa", display: "flex" }} to="/allStores">
-                    <AddBusinessTwoToneIcon
-                      sx={{ fontSize: "38px", backgroundColor: "primary.main " }}
-                    />
-                  </Link>
-                </Fab>
+                <Tooltip title="Add New Store" placement="left" backgroundcolor="black">
+                  <Fab
+                    sx={{ backgroundColor: "#1b4d89 !important", borderRadius: "50% !important" }}
+                    aria-label="add">
+                    <Link style={{ color: "#fafafa", display: "flex" }} to="/allStores">
+                      <AddBusinessTwoToneIcon
+                        sx={{ fontSize: "38px", backgroundColor: "primary.main " }}
+                      />
+                    </Link>
+                  </Fab>
+                </Tooltip>
               </Typography>
 
               <Divider />

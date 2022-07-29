@@ -18,9 +18,8 @@ import { addProduct } from "../redux/actions/action";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { getCategories, addProductData } from "../services/tableDataServices";
-// import Alert from "@mui/material/Alert";
-// import AlertTitle from "@mui/material/AlertTitle";
-// import Stack from "@mui/material/Stack";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function AddProduct() {
   const [name, setName] = useState("");
@@ -46,6 +45,7 @@ function AddProduct() {
   }, []);
   const handleSubmit = async (e) => {
     e.preventDefault();
+    toast("Store added successfully!");
     const newProducts = {
       name: name,
       category: category,
@@ -56,10 +56,6 @@ function AddProduct() {
 
     dispatch(addProduct(DataApi));
     setProducts([...products, newProducts]);
-    // if (name && quantity && price && category) {
-    //   alert("Data Added Successfully!");
-    // }
-
     setCategory("");
     setName("");
     setQuantity("");
@@ -172,6 +168,17 @@ function AddProduct() {
                     onClick={handleSubmit}>
                     Add
                   </Button>
+                  <ToastContainer
+                    position="top-center"
+                    autoClose={5000}
+                    hideProgressBar
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                  />
                 </Box>
               </Box>
             </CardContent>
